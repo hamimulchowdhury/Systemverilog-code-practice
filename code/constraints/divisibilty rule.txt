@@ -1,0 +1,30 @@
+11 = 11
+10 = 5*2
+9 = 3*3
+8 = 2*2*2
+7= 7
+6= 3*2
+5= 5
+4= 2*2
+3= 3
+2- 2
+prime divisor
+2:3,3:2,5;1,7:1,11:1
+8, 9, 5, 7, 11
+
+
+   0	    1	    2	    3	   4	   5	   6 	   7	  8
+_________________________________________________________________________
+|	|	 |	|	|	|	|	|	|	|
+`````````````````````````````````````````````````````````````````````````
+Constarints
+
+1 DIGIT 8 = 0 meet divisible by 10 and 5								    
+2 SUM of DIGIT(0 to 7) divide by 9 meet divisable by 9 as well as 3
+3 SUM of DIGIT(6,7,8) divide by 8 meet divisible by 8 as well as 2 ,4
+meet 2 and 3 meet divsable by 6
+4 DIGIT(0)*3+1 divide by 7 meet divisable by 7
+5 (alternate sum of digits) SUM of DIGIT(0-1+2-3+4-5+6-7) divide by 11 meet divisable by 11
+
+
+	
