@@ -1,0 +1,4 @@
+Problem statement: 
+find random 9 digit number, which are divisible by 2, 3, 4, ... 11.  
+
+No for loop, only using constraints.  
