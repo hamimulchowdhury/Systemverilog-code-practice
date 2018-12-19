@@ -1,10 +1,10 @@
-*/
-Problem statement: 
+
+/*Problem statement: 
 find random 9 digit number, which are divisible by 2, 3, 4, ... 11.  
 
-No for loop, only using constraints.  
+No for loop, only using constraints.  */
 
-/*
+
 //Solution Linkhttps://www.edaplayground.com/x/5T2N
 
 

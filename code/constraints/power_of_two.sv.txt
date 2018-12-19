@@ -1,0 +1,30 @@
+// power of two 
+
+class inline; 
+  rand int num;
+  constraint cons1 {num inside {[1:999999999]};}
+ 
+   constraint cons3{ (num&(num-1))==0;}
+endclass   
+
+program checker1; 
+inline obj; 
+initial 
+begin 
+obj = new(); 
+ 
+  repeat(500) 
+  
+    if( obj.randomize())  
+     begin
+         $write("%0d",obj.num);
+       $write("\n");
+ 
+     end
+       
+        else 
+        $display(" Randomization fails"); 
+  	
+      end   
+
+endprogram
