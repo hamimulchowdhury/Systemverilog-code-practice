@@ -1,0 +1,65 @@
+// Code your testbench here
+// or browse Examples
+// Code your design here
+program AA;
+  class A; // leaf node
+  rand bit[7:0]  v;
+  constraint aa {v inside {[10:99]};}
+endclass
+
+class B extends A; // heap node
+rand A left;
+rand A right;
+
+  constraint heapcond {left.v < v ; right.v > v;}
+  function new(); 
+left = new();
+    right = new();
+endfunction 
+endclass
+
+class C extends B;
+  rand B Lleft;
+  rand B Lright;
+  rand B Rleft;
+  rand B Rright;
+  constraint heapcond1 {Lleft.left.v < left.v ; Lright.left.v > left.v;}
+  constraint heapcond2 {Rleft.right.v < right.v ; Rright.right.v > right.v;}
+ 
+  function new(); 
+    Lleft = new();
+    Lright = new();
+    Rleft = new();
+    Rright = new();
+endfunction 
+endclass
+
+
+
+ C c;
+ 
+  initial
+    begin
+       
+      
+      c = new();
+   
+      repeat(20)
+        if(c.randomize() with { Lleft.left.v < left.v < Lright.left.v<v<Rleft.right.v < right.v < Rright.right.v;})
+          
+          
+          
+          begin
+            $write("\n\n \t\t\t    Root= %0d \n",c.v);
+            $write("\t\t\t/ \t\t \\ \n");
+            $write("\t\t Left= %0d \t\tRight= %0d \n",c.left.v,c.right.v );
+            $write("\t\t / \t \\ \t\t / \t\\ \n");
+            $write("\t Lleft=%0d \tLright= %0d  Rleft=%0d \t Rright=%0d \n\n",c.Lleft.left.v,c.Lright.left.v,c.Rleft.right.v,c.Rright.right.v);
+            $write("ascending order : ");      
+            $write("%d_%d_%d_%d_%d_%d_%d",c.Lleft.left.v,c.left.v,c.Lright.left.v,c.v,c.Rleft.right.v,c.right.v,c.Rright.right.v);
+                     end
+      else
+ 
+      $display(" Randomization fails"); 
+    end
+endprogram

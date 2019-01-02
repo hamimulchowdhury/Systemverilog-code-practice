@@ -1,0 +1,16 @@
+module card;
+  string card[31:0] = {"S7","S8","S9","S10","SA","Sk","SQ","SJ","H7","H8","H9","H10","HA","HJ","HQ","HK","C7","C8","C9","C10","CA","CJ","CQ","CK","D7","D8","D9","D10","DA","DJ","DQ","DK"};
+initial begin
+  repeat(1)
+    begin
+       card.shuffle();
+       foreach(card[i])
+         begin
+           $write("User%0d:%s ",i%4+1,card[i]);
+         end
+      $display();
+    end
+
+ 
+end
+endmodule
