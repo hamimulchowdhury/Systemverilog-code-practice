@@ -1,0 +1,59 @@
+class randomIndex;
+  randc bit  [3:0] S;
+  randc bit  [4:0] R;
+  constraint A{S inside {[0:3]};}
+  constraint B{R inside {[0:12]};}
+endclass
+class card;
+  string suit;
+  bit [4:0] rank;
+ 
+
+endclass
+ 
+class deck ;
+  rand card cards[4][13];
+ //intialize full deck
+	function new ();
+      foreach (cards[i,j])begin
+        cards[i][j] = new;
+        cards[i][j].rank = j+1;
+        if(i==0) cards[i][j].suit = "Heart";
+        if(i==1)cards[i][j].suit = "Spade";
+        if(i==2)cards[i][j].suit = "Club";
+        if(i==3)cards[i][j].suit = "Diamond";
+
+      end
+	endfunction
+endclass
+ static int C;
+module test;
+        randomIndex Index;
+        deck Deck;
+        initial begin
+          repeat(1)begin
+//create a complete new deck
+            Deck = new;
+            Index = new;
+
+            for(int i=0; i<52;)  begin  
+//randomly pick a card to distribute
+              Index.randomize();
+//check if the card is already printed or not 
+              if(Deck.cards[Index.S][Index.R].rank) begin
+
+                
+                i=i+1;
+                $display("User%0d:%s_%0d ",i%4,Deck.cards[Index.S][Index.R].suit,Deck.cards[Index.S][Index.R].rank);
+//mark the card as printed
+                Deck.cards[Index.S][Index.R].rank=0;
+              end
+
+            end
+
+
+          end
+          
+          
+        end
+endmodule

@@ -1,0 +1,23 @@
+Cache Eviction Problem:
+write another program which can generate addresses to test eviction in cache. Usually the cache lines are 64B 
+(LSB 6 bits of address:bit0-bit5) and the next address bits are index( for example say 9 bits from bit6-bit14 ), 
+the rest of the bits are tag bits(bit15-bit31).
+Basically the test need to generate read addresses in such a way that the 9 index bits of the address are same 
+for consecutive address but the tag bits need to be different.
+Your test should generate 1K addresses. 
+
+Cache eviction means to free the memory of the old, unused data in the cache.
+a cache is a smaller and faster memory that stores data for most recently accessed addresses by a processor 
+as they are fetched from main memory.
+
+That means caches have limited capacity. Once the capacity limit is reached, some addresses will need to be 
+moved out back to main memory to find space for new entries.
+
+This is called cache line eviction. Most of the times eviction happens because capacity is full (a set is 
+full is cache is set-way associative).
+
+However there are other scenarios where sometimes software would want to force flush of an address from c
+ache back to memory even when the capacity is not full as well.
+
+https://www.youtube.com/playlist?list=PLbtzT1TYeoMgJ4NcWFuXpnF24fsiaOdGq
+
